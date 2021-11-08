@@ -1,14 +1,17 @@
 import sys
 from cotmm_cli import *
+from cotmm_resources import *
 
 if __name__ == "__main__":
 
     # empty args
-    if len(sys.argv)==1:
+    if len(sys.argv) == 1:
         # help
         cotmm_help()
 
     # resource declaration
-    resources = sys.argv[1:]
+    identifiers = sys.argv[1:]
 
-    cotmm_output("h", ', '.join(resources))
+    for identifier in identifiers:
+        resource_type = getrtype(identifier)
+        getrinfo(resource_type, identifier)
